@@ -1,5 +1,5 @@
 ﻿using Ardalis.Specification;
-using FSH.WebApi.Application.Catalog.Brands;
+using FSH.WebApi.Application.Catalog.Categories;
 using FSH.WebApi.Application.Common.Interfaces;
 using FSH.WebApi.Application.Common.Persistence;
 using FSH.WebApi.Domain.Catalog;
@@ -13,11 +13,11 @@ using Microsoft.Extensions.Logging;
 
 namespace FSH.WebApi.Infrastructure.Catalog;
 
-public class BrandGeneratorJob : IBrandGeneratorJob
+public class BrandGeneratorJob 
 {
     private readonly ILogger<BrandGeneratorJob> _logger;
     private readonly ISender _mediator;
-    private readonly IReadRepository<Brand> _repository;
+    private readonly IReadRepository<Category> _repository;
     private readonly IProgressBarFactory _progressBar;
     private readonly PerformingContext _performingContext;
     private readonly INotificationSender _notifications;
@@ -27,7 +27,7 @@ public class BrandGeneratorJob : IBrandGeneratorJob
     public BrandGeneratorJob(
         ILogger<BrandGeneratorJob> logger,
         ISender mediator,
-        IReadRepository<Brand> repository,
+        IReadRepository<Category> repository,
         IProgressBarFactory progressBar,
         PerformingContext performingContext,
         INotificationSender notifications,
@@ -65,7 +65,7 @@ public class BrandGeneratorJob : IBrandGeneratorJob
         foreach (int index in Enumerable.Range(1, nSeed))
         {
             await _mediator.Send(
-                new CreateBrandRequest
+                new CreateCategoryRequest
                 {
                     Name = $"Brand Random - {Guid.NewGuid()}",
                     Description = "Funny description"
@@ -90,14 +90,14 @@ public class BrandGeneratorJob : IBrandGeneratorJob
 
         foreach (var item in items)
         {
-            await _mediator.Send(new DeleteBrandRequest(item.Id), cancellationToken);
+            await _mediator.Send(new DeleteCategoryRequest(item.Id), cancellationToken);
         }
 
         _logger.LogInformation("All random brands deleted.");
     }
 }
 
-public class RandomBrandsSpec : Specification<Brand>
+public class RandomBrandsSpec : Specification<Category>
 {
     public RandomBrandsSpec() =>
         Query.Where(b => !string.IsNullOrEmpty(b.Name) && b.Name.Contains("Brand Random"));

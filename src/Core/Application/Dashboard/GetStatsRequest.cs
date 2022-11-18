@@ -11,11 +11,11 @@ public class GetStatsRequestHandler : IRequestHandler<GetStatsRequest, StatsDto>
 {
     private readonly IUserService _userService;
     private readonly IRoleService _roleService;
-    private readonly IReadRepository<Brand> _brandRepo;
+    private readonly IReadRepository<Category> _brandRepo;
     private readonly IReadRepository<Product> _productRepo;
     private readonly IStringLocalizer _t;
 
-    public GetStatsRequestHandler(IUserService userService, IRoleService roleService, IReadRepository<Brand> brandRepo, IReadRepository<Product> productRepo, IStringLocalizer<GetStatsRequestHandler> localizer)
+    public GetStatsRequestHandler(IUserService userService, IRoleService roleService, IReadRepository<Category> brandRepo, IReadRepository<Product> productRepo, IStringLocalizer<GetStatsRequestHandler> localizer)
     {
         _userService = userService;
         _roleService = roleService;
@@ -43,7 +43,7 @@ public class GetStatsRequestHandler : IRequestHandler<GetStatsRequest, StatsDto>
             var filterStartDate = new DateTime(selectedYear, month, 01).ToUniversalTime();
             var filterEndDate = new DateTime(selectedYear, month, DateTime.DaysInMonth(selectedYear, month), 23, 59, 59).ToUniversalTime(); // Monthly Based
 
-            var brandSpec = new AuditableEntitiesByCreatedOnBetweenSpec<Brand>(filterStartDate, filterEndDate);
+            var brandSpec = new AuditableEntitiesByCreatedOnBetweenSpec<Category>(filterStartDate, filterEndDate);
             var productSpec = new AuditableEntitiesByCreatedOnBetweenSpec<Product>(filterStartDate, filterEndDate);
 
             brandsFigure[i - 1] = await _brandRepo.CountAsync(brandSpec, cancellationToken);

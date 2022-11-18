@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FSH.WebApi.Infrastructure.Persistence.Configuration;
 
-public class BrandConfig : IEntityTypeConfiguration<Brand>
+public class BrandConfig : IEntityTypeConfiguration<Category>
 {
-    public void Configure(EntityTypeBuilder<Brand> builder)
+    public void Configure(EntityTypeBuilder<Category> builder)
     {
         builder.IsMultiTenant();
 
@@ -27,8 +27,6 @@ public class ProductConfig : IEntityTypeConfiguration<Product>
             .Property(b => b.Name)
                 .HasMaxLength(1024);
 
-        builder
-            .Property(p => p.ImagePath)
-                .HasMaxLength(2048);
+        
     }
 }

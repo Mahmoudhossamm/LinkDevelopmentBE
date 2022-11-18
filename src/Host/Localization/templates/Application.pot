@@ -1,36 +1,36 @@
 #: Application\Catalog\Brands\CreateBrandRequest.cs:16
 #. .WithMessage((_, name) => T["Brand {0} already Exists.", name]);
-msgctxt "FSH.WebApi.Application.Catalog.Brands.CreateBrandRequestValidator"
+msgctxt "FSH.WebApi.Application.Catalog.Categories.CreateBrandRequestValidator"
 msgid "Brand {0} already Exists."
 msgstr ""
 
 #: Application\Catalog\Brands\DeleteBrandRequest.cs:26
 #. throw new ConflictException(_t["Brand cannot be deleted as it's being used."]);
-msgctxt "FSH.WebApi.Application.Catalog.Brands.DeleteBrandRequestHandler"
+msgctxt "FSH.WebApi.Application.Catalog.Categories.DeleteBrandRequestHandler"
 msgid "Brand cannot be deleted as it's being used."
 msgstr ""
 
 #: Application\Catalog\Brands\DeleteBrandRequest.cs:31
 #. _ = brand ?? throw new NotFoundException(_t["Brand {0} Not Found."]);
-msgctxt "FSH.WebApi.Application.Catalog.Brands.DeleteBrandRequestHandler"
+msgctxt "FSH.WebApi.Application.Catalog.Categories.DeleteBrandRequestHandler"
 msgid "Brand {0} Not Found."
 msgstr ""
 
 #: Application\Catalog\Brands\GetBrandRequest.cs:26
 #. ?? throw new NotFoundException(_t["Brand {0} Not Found.", request.Id]);
-msgctxt "FSH.WebApi.Application.Catalog.Brands.GetBrandRequestHandler"
+msgctxt "FSH.WebApi.Application.Catalog.Categories.GetBrandRequestHandler"
 msgid "Brand {0} Not Found."
 msgstr ""
 
 #: Application\Catalog\Brands\UpdateBrandRequest.cs:19
 #. .WithMessage((_, name) => T["Brand {0} already Exists.", name]);
-msgctxt "FSH.WebApi.Application.Catalog.Brands.UpdateBrandRequestValidator"
+msgctxt "FSH.WebApi.Application.Catalog.Categories.UpdateBrandRequestValidator"
 msgid "Brand {0} already Exists."
 msgstr ""
 
 #: Application\Catalog\Brands\UpdateBrandRequest.cs:36
 #. ?? throw new NotFoundException(_t["Brand {0} Not Found.", request.Id]);
-msgctxt "FSH.WebApi.Application.Catalog.Brands.UpdateBrandRequestHandler"
+msgctxt "FSH.WebApi.Application.Catalog.Categories.UpdateBrandRequestHandler"
 msgid "Brand {0} Not Found."
 msgstr ""
 

@@ -2,7 +2,7 @@ namespace FSH.WebApi.Application.Catalog.Products;
 
 public class UpdateProductRequestValidator : CustomValidator<UpdateProductRequest>
 {
-    public UpdateProductRequestValidator(IReadRepository<Product> productRepo, IReadRepository<Brand> brandRepo, IStringLocalizer<UpdateProductRequestValidator> T)
+    public UpdateProductRequestValidator(IReadRepository<Product> productRepo, IReadRepository<Category> brandRepo, IStringLocalizer<UpdateProductRequestValidator> T)
     {
         RuleFor(p => p.Name)
             .NotEmpty()
@@ -12,13 +12,11 @@ public class UpdateProductRequestValidator : CustomValidator<UpdateProductReques
                         is not Product existingProduct || existingProduct.Id == product.Id)
                 .WithMessage((_, name) => T["Product {0} already Exists.", name]);
 
-        RuleFor(p => p.Rate)
+        RuleFor(p => p.Price)
             .GreaterThanOrEqualTo(1);
 
-        RuleFor(p => p.Image)
-            .InjectValidator();
 
-        RuleFor(p => p.BrandId)
+        RuleFor(p => p.CategoryId)
             .NotEmpty()
             .MustAsync(async (id, ct) => await brandRepo.GetByIdAsync(id, ct) is not null)
                 .WithMessage((_, id) => T["Brand {0} Not Found.", id]);

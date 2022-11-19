@@ -6,6 +6,7 @@ public class ProductsController : VersionedApiController
 {
     [HttpPost("search")]
     [AllowAnonymous]
+    [TenantIdHeader]
     [OpenApiOperation("Search products using available filters.", "")]
     public Task<PaginationResponse<ProductDto>> SearchAsync(SearchProductsRequest request)
     {

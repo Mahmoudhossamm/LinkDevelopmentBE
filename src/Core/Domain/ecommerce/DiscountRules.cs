@@ -13,11 +13,11 @@ public class DiscountRules : AuditableEntity, IAggregateRoot
     public string? Description { get; private set; }
     public int Quantity { get; set; }
     public decimal Percentage { get; private set; }
-    public Guid ProductId { get; private set; }
+    public Guid? ProductId { get; private set; }
     public virtual Product Product { get; private set; } = default!;
 
 
-    public DiscountRules(string name, string description, int quantity, decimal percentage, Guid productId)
+    public DiscountRules(string name, string description, int quantity, decimal percentage, Guid? productId)
     {
         Name = name;
         Description = description;

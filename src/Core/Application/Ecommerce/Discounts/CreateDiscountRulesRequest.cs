@@ -13,7 +13,7 @@ public class CreateDiscountRulesRequest : IRequest<Guid>
     public string? Description { get; set; }
     public int Quantity { get; set; }
     public decimal Percentage { get; set; }
-    public Guid ProductId { get; set; }
+    public Guid? ProductId { get; set; }
 }
 
 public class CreateDiscountRulesRequestValidator : CustomValidator<CreateDiscountRulesRequest>

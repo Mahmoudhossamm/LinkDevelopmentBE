@@ -5,6 +5,7 @@ namespace FSH.WebApi.Host.Controllers.Ecommerce;
 public class OrdersController : VersionedApiController
 {
     [HttpPost("search")]
+    [AllowAnonymous]
     [OpenApiOperation("Search Discount Rules using available filters.", "")]
     public Task<PaginationResponse<OrdersDto>> SearchAsync(SearchOrdersRequest request)
     {
@@ -12,6 +13,7 @@ public class OrdersController : VersionedApiController
     }
 
     [HttpGet("{id:guid}")]
+    [AllowAnonymous]
     [OpenApiOperation("Get product details.", "")]
     public Task<OrdersDto> GetAsync(Guid id)
     {
@@ -19,6 +21,7 @@ public class OrdersController : VersionedApiController
     }
 
     [HttpPost]
+    [AllowAnonymous]
     [OpenApiOperation("Create a new Discount Rule.", "")]
     public Task<Guid> CreateAsync(CreateOrdersRequest request)
     {

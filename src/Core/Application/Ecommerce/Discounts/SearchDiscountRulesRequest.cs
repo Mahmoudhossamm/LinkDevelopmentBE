@@ -10,13 +10,15 @@ namespace FSH.WebApi.Application.Ecommerce.Discounts;
 
 public class SearchDiscountRulesRequest : PaginationFilter, IRequest<PaginationResponse<DiscountRulesDto>>
 {
+    public Guid? ProductId { get; set; }
 }
 
 public class DiscountRulesBySearchRequestSpec : EntitiesByPaginationFilterSpec<DiscountRules, DiscountRulesDto>
 {
     public DiscountRulesBySearchRequestSpec(SearchDiscountRulesRequest request)
         : base(request) =>
-        Query.OrderBy(c => c.Name, !request.HasOrderBy());
+        Query
+        .OrderBy(c => c.Name, !request.HasOrderBy());
 }
 
 public class SearchDiscountRulesRequestHandler : IRequestHandler<SearchDiscountRulesRequest, PaginationResponse<DiscountRulesDto>>
